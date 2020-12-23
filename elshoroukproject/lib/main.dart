@@ -1,5 +1,5 @@
-import 'package:elshoroukproject/screens/Collecting_data_screen.dart';
 import 'package:elshoroukproject/screens/auth_screen.dart';
+import 'package:elshoroukproject/screens/home_screen.dart';
 import 'package:elshoroukproject/screens/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             return SplashScreen();
           } else {
             if (FirebaseAuth.instance.currentUser != null) {
-              return CollectingDataScreen();
+              return HomeScreen();
             } else {
               return AuthScreen();
             }
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         },
       ),
       routes: {
-        CollectingDataScreen.routeName: (context) => CollectingDataScreen(),
+        HomeScreen.routeName: (context) => HomeScreen(),
         AuthScreen.routename: (context) => AuthScreen(),
       },
     );

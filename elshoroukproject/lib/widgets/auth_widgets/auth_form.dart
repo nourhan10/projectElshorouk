@@ -1,5 +1,5 @@
-import 'package:elshoroukproject/screens/Collecting_data_screen.dart';
-import 'package:elshoroukproject/screens/transit_screen.dart';
+import 'package:elshoroukproject/screens/home_screen.dart';
+
 import 'package:elshoroukproject/widgets/auth_widgets/auth_title.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -48,8 +48,7 @@ class _AuthFormState extends State<AuthForm> {
       try {
         await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: email, password: password);
-        Navigator.of(context)
-            .pushReplacementNamed(CollectingDataScreen.routeName);
+        Navigator.of(context).pushNamed(HomeScreen.routeName);
       } on FirebaseException catch (error) {
         setState(() {
           loading = false;
@@ -70,12 +69,6 @@ class _AuthFormState extends State<AuthForm> {
             break;
         }
       }
-      /*on SocketException catch (error) {
-        setState(() {
-          loading = false;
-        });
-        showError('bad network');
-      }*/
     }
   }
 
@@ -87,7 +80,7 @@ class _AuthFormState extends State<AuthForm> {
       try {
         await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email, password: password);
-        Navigator.of(context).pushReplacementNamed(TransitScreen.routeName);
+        Navigator.of(context).pushNamed(HomeScreen.routeName);
       } on FirebaseException catch (error) {
         setState(() {
           loading = false;
@@ -104,12 +97,6 @@ class _AuthFormState extends State<AuthForm> {
             showError('You entered weak password');
         }
       }
-      /*on SocketException catch (error) {
-        setState(() {
-          loading = false;
-        });
-        showError('bad network');
-      }*/
     }
   }
 
